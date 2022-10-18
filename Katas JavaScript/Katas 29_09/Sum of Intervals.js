@@ -18,33 +18,32 @@ function sumIntervals(intervals) {
   }*/
 
   let arrayIntervalosLimpios = [];
-  arrayIntervalosLimpios[0]=intervals[0];
-  
-  intervals.array.forEach(element => {
-      
-      if(element[0]>=arrayIntervalosLimpios[0][0]){
-        //comparando los dos pequeños
-          
-          if(element[0]<=arrayIntervalosLimpios[0][1]){
-            //el pequeño forma parte del intervalo//
-            if(element[1]>arrayIntervalosLimpios[0][1]){
-              //nos amplia nuestro intervalo por arriba
-              arrayIntervalosLimpios[0][1]=element[1];
-            }
-            }else{
-             //tenemos un nuevo intervalo
-            arrayIntervalosLimpios.push(element);
-      }
-      }else{
-        //el pequeño dado es menor que el del intervalo con el que lo estamos comparando
-        //Comparamos los grandes para saber lo que sucede
-        if(element[1]>=arrayIntervalosLimpios[0][1]){
-        //el anterior intervalo esta contenido en el element
-        arrayIntervalosLimpios[0]=element;
-        }else{
-              //tenemos un nuevo intervalo por debajo del que teníamos
+  arrayIntervalosLimpios[0] = intervals[0];
+
+  intervals.array.forEach((element) => {
+    if (element[0] >= arrayIntervalosLimpios[0][0]) {
+      //comparando los dos pequeños
+
+      if (element[0] <= arrayIntervalosLimpios[0][1]) {
+        //el pequeño forma parte del intervalo//
+        if (element[1] > arrayIntervalosLimpios[0][1]) {
+          //nos amplia nuestro intervalo por arriba
+          arrayIntervalosLimpios[0][1] = element[1];
         }
+      } else {
+        //tenemos un nuevo intervalo
+        arrayIntervalosLimpios.push(element);
       }
+    } else {
+      //el pequeño dado es menor que el del intervalo con el que lo estamos comparando
+      //Comparamos los grandes para saber lo que sucede
+      if (element[1] >= arrayIntervalosLimpios[0][1]) {
+        //el anterior intervalo esta contenido en el element
+        arrayIntervalosLimpios[0] = element;
+      } else {
+        //tenemos un nuevo intervalo por debajo del que teníamos
+      }
+    }
   });
 
   /*solucione web
@@ -73,11 +72,12 @@ function sumIntervals(intervals) {
   }
   return result;
 }*/
-       
+}
 
-  } 
- 
-
-
-
- console.log(sumIntervals([[1,5],[7,10],[4,8]]));
+console.log(
+  sumIntervals([
+    [1, 5],
+    [7, 10],
+    [4, 8],
+  ])
+);
